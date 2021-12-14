@@ -1,0 +1,22 @@
+.navBtnActive {
+  color: rgb(78, 78, 241) !important;
+  border-bottom: 3px solid rgb(78, 78, 241);
+  text-decoration: none;
+  display: block;
+  padding: 1rem;
+  font-weight: 600;
+  border-radius: 2px;
+}
+
+.navBtn {
+  text-decoration: none;
+  display: block;
+  color: var(--heading-primary);
+  padding: 1rem;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.navBtn:hover {
+  background-color: rgba(175, 172, 172, 0.301);
+}

@@ -154,7 +154,7 @@ function User(): JSX.Element {
       {/* BOTTOM SECTION */}
       <Box
         sx={{
-          padding: mdScreen ? '0 2rem' : '2rem 24rem',
+          padding: mdScreen ? '0 0.5rem' : '2rem 24rem',
           background: 'var(--body)',
           minHeight: '100vh',
         }}

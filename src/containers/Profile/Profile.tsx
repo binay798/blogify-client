@@ -154,7 +154,7 @@ function Profile(): JSX.Element {
       <Box
         sx={{
           background: 'var(--body)',
-          padding: mdScreen ? '0 2rem' : '2rem 24rem',
+          padding: mdScreen ? '2rem 0.5rem' : '2rem 24rem',
           minHeight: '100vh',
         }}
       >

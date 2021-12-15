@@ -11,6 +11,7 @@ import {
   TextField,
   Input,
   Button,
+  useMediaQuery,
 } from '@mui/material';
 import { Box } from '@mui/system';
 import * as classes from './AddPost.style';
@@ -38,15 +39,20 @@ const style = {
 function AddPost(): JSX.Element {
   const state = useSelector((state: RootState) => state.auth);
   const [open, setOpen] = useState(false);
+  const smScreen = useMediaQuery('(max-width: 600px)');
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   return (
-    <Paper sx={classes.addPostPaper}>
+    <Paper
+      sx={{ ...classes.addPostPaper, padding: smScreen ? '1rem' : '3rem' }}
+    >
       <Stack spacing={4} direction='row'>
         <Avatar src={`${state.user?.photo}`} />
 
         <Box onClick={handleOpen} sx={classes.postBtn}>
-          What's on your mind {state.user?.firstname}?
+          <Typography variant={smScreen ? 'body2' : 'body1'} color='secondary'>
+            What's on your mind {state.user?.firstname}?
+          </Typography>
         </Box>
       </Stack>
       <Divider sx={{ borderColor: 'var(--divider)', marginTop: '2rem' }} />

@@ -1,6 +1,5 @@
 export const addPostPaper = {
   maxWidth: '60rem',
-  padding: '3rem',
   margin: '0 auto',
   background: 'var(--appbar)',
   width: '100%',

@@ -88,7 +88,7 @@ function User(): JSX.Element {
         {/* USER SUMMARY SECTION */}
         <Box
           sx={{
-            padding: !mdScreen ? '0 4rem' : '0 2rem',
+            padding: !mdScreen ? '0 4rem' : '0 1rem',
             marginBottom: '1rem',
           }}
         >

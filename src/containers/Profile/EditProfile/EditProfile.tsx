@@ -84,7 +84,7 @@ function EditProfile() {
       {/* EDIT CONTAINER */}
       <form onSubmit={submitHandler}>
         <Grid container spacing={3}>
-          <Grid item sm={6}>
+          <Grid item sm={6} xs={12}>
             <TextField
               sx={{ width: '100%' }}
               variant='outlined'
@@ -93,7 +93,7 @@ function EditProfile() {
               onChange={(e) => setFirstname(e.target.value)}
             />
           </Grid>
-          <Grid item sm={6}>
+          <Grid item sm={6} xs={12}>
             <TextField
               sx={{ width: '100%' }}
               variant='outlined'
@@ -102,7 +102,7 @@ function EditProfile() {
               onChange={(e) => setLastname(e.target.value)}
             />
           </Grid>
-          <Grid item sm={6}>
+          <Grid item sm={6} xs={12}>
             <TextField
               sx={{ width: '100%' }}
               variant='outlined'
@@ -111,7 +111,7 @@ function EditProfile() {
               onChange={(e) => setUsername(e.target.value)}
             />
           </Grid>
-          <Grid item sm={6}>
+          <Grid item sm={6} xs={12}>
             <TextField
               sx={{ width: '100%' }}
               variant='outlined'
@@ -121,7 +121,7 @@ function EditProfile() {
               onChange={(e) => setEmail(e.target.value)}
             />
           </Grid>
-          <Grid item sm={6}>
+          <Grid item sm={6} xs={12}>
             <TextField
               sx={{ width: '100%' }}
               variant='outlined'
@@ -130,7 +130,7 @@ function EditProfile() {
               onChange={(e) => setPermanentAddress(e.target.value)}
             />
           </Grid>
-          <Grid item sm={6}>
+          <Grid item sm={6} xs={12}>
             <TextField
               sx={{ width: '100%' }}
               variant='outlined'
@@ -140,7 +140,7 @@ function EditProfile() {
             />
           </Grid>
 
-          <Grid item sm={6}>
+          <Grid item sm={6} xs={12}>
             <TextField
               sx={{ width: '100%' }}
               variant='outlined'
@@ -150,7 +150,7 @@ function EditProfile() {
               onChange={(e) => setMobile(parseInt(e.target.value))}
             />
           </Grid>
-          <Grid item sm={6}>
+          <Grid item sm={6} xs={12}>
             <TextField
               sx={{ width: '100%' }}
               variant='outlined'
@@ -159,7 +159,7 @@ function EditProfile() {
               onChange={(e) => setHighSchool(e.target.value)}
             />
           </Grid>
-          <Grid item sm={6}>
+          <Grid item sm={6} xs={12}>
             <TextField
               sx={{ width: '100%' }}
               variant='outlined'
@@ -168,7 +168,7 @@ function EditProfile() {
               onChange={(e) => setCollege(e.target.value)}
             />
           </Grid>
-          <Grid item sm={6}>
+          <Grid item sm={6} xs={12}>
             <Button
               sx={{ width: '100%' }}
               variant='contained'

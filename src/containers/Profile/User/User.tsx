@@ -80,7 +80,7 @@ function User(): JSX.Element {
       <Box
         sx={{
           background: 'var(--appbar)',
-          padding: mdScreen ? '0 2rem' : '0 20rem',
+          padding: mdScreen ? '0 0.5rem' : '0 20rem',
         }}
       >
         {/* COVER PHOTO SECTION */}
@@ -114,7 +114,7 @@ function User(): JSX.Element {
             </Badge>
             <Stack direction='column'>
               <Typography
-                variant='h4'
+                variant={!smScreen ? 'h4' : 'h6'}
                 sx={{ textTransform: 'capitalize' }}
                 color={blueGrey[100]}
                 component='div'

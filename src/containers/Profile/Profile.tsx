@@ -56,13 +56,15 @@ function Profile(): JSX.Element {
       <Box
         sx={{
           background: 'var(--appbar)',
-          padding: mdScreen ? '0 2rem' : '0 20rem',
+          padding: mdScreen ? '0 0.5rem' : '0 20rem',
         }}
       >
         {/* COVER PHOTO SECTION */}
         <Box sx={classes.coverPhoto}>Add</Box>
         {/* USER SUMMARY SECTION */}
-        <Box sx={{ padding: '0 4rem', marginBottom: '1rem' }}>
+        <Box
+          sx={{ padding: mdScreen ? '0 1rem' : '0 4rem', marginBottom: '1rem' }}
+        >
           <Stack
             direction='row'
             sx={{ marginTop: '-3rem', flexWrap: 'wrap' }}
@@ -110,7 +112,7 @@ function Profile(): JSX.Element {
             </Badge>
             <Stack direction='column'>
               <Typography
-                variant={!mdScreen ? 'h4' : 'h5'}
+                variant={!mdScreen ? 'h4' : 'h6'}
                 sx={{ textTransform: 'capitalize' }}
                 color={blueGrey[100]}
                 component='div'

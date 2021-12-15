@@ -199,7 +199,7 @@ function RightContainer(): JSX.Element {
     setPage(value);
   };
   return (
-    <Paper sx={{ padding: '0rem', background: 'var(--appbar)' }}>
+    <Paper sx={{ padding: '1rem', background: 'var(--appbar)' }}>
       <Typography
         gutterBottom
         sx={{ fontWeight: 600, padding: '1rem' }}

@@ -35,6 +35,7 @@ function User(): JSX.Element {
   const [navs, setNavs] = useState('posts');
   const params = useParams();
   const mdScreen = useMediaQuery('(max-width: 960px)');
+  const smScreen = useMediaQuery('(max-width: 600px)');
 
   useEffect(() => {
     (async () => {
@@ -93,7 +94,7 @@ function User(): JSX.Element {
         >
           <Stack
             direction='row'
-            sx={{ marginTop: '-3rem' }}
+            sx={{ marginTop: '-3rem', flexWrap: 'wrap' }}
             spacing={4}
             alignItems={!mdScreen ? 'flex-end' : 'center'}
           >
@@ -103,7 +104,10 @@ function User(): JSX.Element {
               anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
             >
               <Avatar
-                sx={{ width: 170, height: 170 }}
+                sx={{
+                  width: smScreen ? 100 : 170,
+                  height: smScreen ? 100 : 170,
+                }}
                 alt='Travis Howard'
                 src={`${user.photo}`}
               />

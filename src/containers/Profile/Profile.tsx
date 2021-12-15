@@ -26,6 +26,7 @@ import { RootState } from './../../store/Store';
 function Profile(): JSX.Element {
   const state = useSelector((state: RootState) => state.auth);
   const mdScreen = useMediaQuery('(max-width: 960px)');
+  const smScreen = useMediaQuery('(max-width: 600px)');
 
   const [file, setFile] = useState<File>();
   const [open, setOpen] = useState(false);
@@ -99,7 +100,10 @@ function Profile(): JSX.Element {
               }
             >
               <Avatar
-                sx={{ width: 170, height: 170 }}
+                sx={{
+                  width: smScreen ? 100 : 170,
+                  height: smScreen ? 100 : 170,
+                }}
                 alt='Travis Howard'
                 src={`${state.user?.photo}`}
               />

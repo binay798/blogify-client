@@ -168,6 +168,7 @@ function RightContainer(): JSX.Element {
   const [page, setPage] = useState(1);
   const [total, setTotal] = useState(0);
   const limit = 4;
+  const smScreen = useMediaQuery('(max-width: 600px)');
 
   useEffect(() => {
     (async () => {
@@ -223,7 +224,11 @@ function RightContainer(): JSX.Element {
           </Typography>
         </Stack>
       )}
-      <Grid container spacing={4} sx={{ padding: '1rem 4rem' }}>
+      <Grid
+        container
+        spacing={4}
+        sx={{ padding: smScreen ? '1rem' : '1rem 4rem' }}
+      >
         {users &&
           users.length !== 0 &&
           users.map((el, id) => {

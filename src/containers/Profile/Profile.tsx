@@ -38,7 +38,6 @@ function Profile(): JSX.Element {
   const fileChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
     if (!files) return;
-    console.log('file', 'profile.tsx');
     setFile(files[0]);
     setOpen(true);
   };

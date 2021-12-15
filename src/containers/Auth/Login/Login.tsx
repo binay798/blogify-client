@@ -94,7 +94,7 @@ function Login() {
                 type='submit'
                 disabled={loading}
               >
-                Login
+                {loading ? 'Please wait...' : 'Login'}
               </Button>
               <Link
                 to='/auth/signup'

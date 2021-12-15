@@ -133,7 +133,7 @@ function Signup() {
                 type='submit'
                 disabled={loading}
               >
-                Signup
+                {loading ? 'Please wait...' : 'Signup'}
               </Button>
               <Link
                 to='/auth'

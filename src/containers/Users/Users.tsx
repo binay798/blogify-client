@@ -52,7 +52,7 @@ function Users(): JSX.Element {
             ...rightSideStyle,
             overflowY: 'scroll',
             '&::-webkit-scrollbar': { display: 'none' },
-            padding: mdScreen ? '1rem' : '4rem',
+            padding: mdScreen ? '0rem' : '4rem',
           }}
         >
           <RightContainer />
@@ -199,7 +199,7 @@ function RightContainer(): JSX.Element {
     setPage(value);
   };
   return (
-    <Paper sx={{ padding: '1rem', background: 'var(--appbar)' }}>
+    <Paper sx={{ padding: '0rem', background: 'var(--appbar)' }}>
       <Typography
         gutterBottom
         sx={{ fontWeight: 600, padding: '1rem' }}
@@ -227,7 +227,7 @@ function RightContainer(): JSX.Element {
       <Grid
         container
         spacing={4}
-        sx={{ padding: smScreen ? '1rem' : '1rem 4rem' }}
+        sx={{ padding: smScreen ? '0rem' : '1rem 4rem' }}
       >
         {users &&
           users.length !== 0 &&

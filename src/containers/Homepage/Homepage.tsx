@@ -87,7 +87,7 @@ function Homepage(): JSX.Element {
             // width: '75%',
             height: '100%',
             width: '100%',
-            padding: '0 1rem',
+            padding: '0 0.5rem',
           }}
         >
           <Stack
@@ -102,6 +102,9 @@ function Homepage(): JSX.Element {
                 overflowY: 'scroll',
                 height: 'calc(100% - 2rem)',
                 width: '100%',
+                '&::-webkit-scrollbar': {
+                  width: 0,
+                },
               }}
             >
               <AddPost />

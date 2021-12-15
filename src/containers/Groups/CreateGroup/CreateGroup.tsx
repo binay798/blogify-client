@@ -15,6 +15,7 @@ import {
   Button,
   Input,
   IconButton,
+  useMediaQuery,
 } from '@mui/material';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import { Link } from 'react-router-dom';
@@ -53,6 +54,7 @@ function CreateGroup(): JSX.Element {
   const [loading, setLoading] = useState(false);
   const [file, setFile] = useState<File>();
   const [imgSrc, setImgSrc] = useState('');
+  const smScreen = useMediaQuery('(max-width: 600px)');
 
   const radioChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setStatus(e.target.value);
@@ -88,7 +90,16 @@ function CreateGroup(): JSX.Element {
     }
   };
   return (
-    <Box sx={{ overflowY: 'scroll', height: '100%', padding: '2rem' }}>
+    <Box
+      sx={{
+        overflowY: 'scroll',
+        height: '100%',
+        padding: smScreen ? '0rem' : '2rem',
+        '&::-webkit-scrollbar': {
+          width: 0,
+        },
+      }}
+    >
       <Paper sx={paper}>
         {/* BREADCRUMBS */}
         <Stack direction='row' sx={{ marginBottom: '1rem' }}>

@@ -13,6 +13,7 @@ import axios from '../../../axiosInstance';
 import { User } from '../../../store/reducers/auth.reducer';
 import axiosMain from 'axios';
 import { Link } from 'react-router-dom';
+import CircularLoading from '../../../components/CircularLoading/CircularLoading';
 
 function HomepageRightSection() {
   const [users, setUsers] = useState<User[] | null>(null);
@@ -61,9 +62,9 @@ function HomepageRightSection() {
           People you may know
         </Typography>
         {!users && (
-          <Typography variant='body2' color='secondary' gutterBottom>
-            Loading...
-          </Typography>
+          <Box sx={{ margin: '1rem' }}>
+            <CircularLoading />
+          </Box>
         )}
         {users &&
           users.map((el, id) => {

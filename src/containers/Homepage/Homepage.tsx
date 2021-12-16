@@ -1,12 +1,5 @@
 import { useState } from 'react';
-import {
-  Grid,
-  Box,
-  Stack,
-  CircularProgress,
-  Typography,
-  Pagination,
-} from '@mui/material';
+import { Grid, Box, Stack, Pagination } from '@mui/material';
 import { useEffect } from 'react';
 import * as classes from './Homepage.style';
 import HomepageLeftSection from './HomepageLeftSection/HomepageLeftSection';
@@ -17,6 +10,7 @@ import AddPost from '../../components/AddPost/AddPost';
 import axios from '../../axiosInstance';
 import { Post as SinglePost } from '../../store/reducers/post.reducer';
 import axiosMain from 'axios';
+import CircularLoading from '../../components/CircularLoading/CircularLoading';
 
 function Homepage(): JSX.Element {
   const [posts, setPosts] = useState<SinglePost[] | null>(null);
@@ -112,18 +106,9 @@ function Homepage(): JSX.Element {
               {/* POSTS */}
 
               {!posts || loading ? (
-                <Stack
-                  sx={{ padding: '2rem' }}
-                  direction='row'
-                  alignItems='center'
-                  justifyContent='center'
-                  spacing={1}
-                >
-                  <CircularProgress />
-                  <Typography variant='body2' color='secondary'>
-                    Loading...
-                  </Typography>
-                </Stack>
+                <Box sx={{ margin: '1rem' }}>
+                  <CircularLoading />
+                </Box>
               ) : null}
 
               <Stack spacing={8} sx={{ margin: '0 auto', marginTop: '3rem' }}>

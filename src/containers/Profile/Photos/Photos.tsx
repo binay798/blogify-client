@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
-import { Typography, Box, Paper, CircularProgress, Stack } from '@mui/material';
+import { Typography, Box, Paper } from '@mui/material';
 import * as classes from './Photos.style';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../store/Store';
 import axios from '../../../axiosInstance';
 import { Post as SinglePost } from '../../../store/reducers/post.reducer';
 import axiosMain from 'axios';
+import CircularLoading from '../../../components/CircularLoading/CircularLoading';
 
 function Photos() {
   const state = useSelector((state: RootState) => state.auth);
@@ -37,19 +38,7 @@ function Photos() {
       <Typography style={{ marginBottom: '1rem' }} variant='h5'>
         Photos
       </Typography>
-      {!posts && (
-        <Stack
-          direction='row'
-          alignItems='center'
-          justifyContent='center'
-          spacing={1}
-        >
-          <CircularProgress />
-          <Typography variant='body2' color='secondary'>
-            Loading...
-          </Typography>
-        </Stack>
-      )}
+      {!posts && <CircularLoading />}
 
       <Box sx={classes.photoContainer}>
         {posts &&

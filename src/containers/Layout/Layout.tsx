@@ -122,12 +122,18 @@ function Layout(): JSX.Element {
                     'aria-labelledby': 'basic-button',
                   }}
                 >
-                  <MenuItem onClick={handleClose}>
-                    <Stack direction='row' alignItems='center' spacing={1}>
-                      <AccountCircleIcon />
-                      <Typography variant='body1'>Profile</Typography>
-                    </Stack>
-                  </MenuItem>
+                  <Link
+                    to='/profile'
+                    style={{ textDecoration: 'none', color: 'inherit' }}
+                  >
+                    <MenuItem onClick={handleClose}>
+                      <Stack direction='row' alignItems='center' spacing={1}>
+                        <AccountCircleIcon />
+                        <Typography variant='body1'>Profile</Typography>
+                      </Stack>
+                    </MenuItem>
+                  </Link>
+
                   <MenuItem onClick={handleClose}>
                     <Stack direction='row' alignItems='center' spacing={1}>
                       <ManageAccountsIcon />

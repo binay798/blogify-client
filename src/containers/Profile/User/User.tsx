@@ -28,6 +28,7 @@ import { Post as MainPost } from '../../../store/reducers/post.reducer';
 import axios from './../../../axiosInstance';
 import { User as MainUser } from '../../../store/reducers/auth.reducer';
 import axiosMain from 'axios';
+import CircularLoading from '../../../components/CircularLoading/CircularLoading';
 
 function User(): JSX.Element {
   // const state = useSelector((state: RootState) => state.auth);
@@ -57,20 +58,12 @@ function User(): JSX.Element {
           width: '100%',
           height: 'calc(100vh - 65px)',
           background: 'var(--body)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
         }}
       >
-        <Stack
-          direction='row'
-          sx={{ height: '100%' }}
-          alignItems='center'
-          justifyContent='center'
-          spacing={2}
-        >
-          <CircularProgress />
-          <Typography variant='body1' color='secondary.main'>
-            Loading...
-          </Typography>
-        </Stack>
+        <CircularLoading />
       </Box>
     );
   }

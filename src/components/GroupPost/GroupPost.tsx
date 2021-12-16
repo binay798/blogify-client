@@ -24,7 +24,6 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../store/Store';
 import axios from '../../axiosInstance';
 import { User } from '../../store/reducers/auth.reducer';
-import { baseUrl } from './../../axiosInstance';
 import moment from 'moment';
 import { Post as SinglePost } from '../../store/reducers/post.reducer';
 import axiosMain from 'axios';
@@ -86,7 +85,7 @@ function GroupPost(props: PostProps) {
       />
       <CardMedia
         component='img'
-        image={`${baseUrl}/static/images/${post.photo}`}
+        image={`${post.photo}`}
         sx={{ width: '100%', objectFit: 'contain' }}
         alt='Paella dish'
       />

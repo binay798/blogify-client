@@ -12,7 +12,6 @@ import {
   ListItemText,
   ListItemIcon,
   CircularProgress,
-  Stack,
   Paper,
   Avatar,
 } from '@mui/material';
@@ -27,6 +26,7 @@ import * as Actions from '../../store/actions/index';
 import { RootState } from '../../store/Store';
 import { Group } from '../../store/reducers/group.reducer';
 import axiosMain from 'axios';
+import CircularLoading from '../../components/CircularLoading/CircularLoading';
 
 const leftSideStyle = {
   background: 'var(--appbar)',
@@ -103,14 +103,9 @@ function Groups() {
 
           {/* GROUPS THAT YOU HAVE JOINED */}
           {loading ? (
-            <Stack
-              sx={{ padding: '1rem 0' }}
-              direction='row'
-              alignItems='center'
-              justifyContent='center'
-            >
-              <CircularProgress />
-            </Stack>
+            <Box sx={{ margin: '1rem' }}>
+              <CircularLoading />
+            </Box>
           ) : (
             <YourGroupList groups={state.groups} />
           )}

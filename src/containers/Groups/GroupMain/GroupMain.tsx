@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import {
   Typography,
   Box,
-  CircularProgress,
   Pagination,
   Stack,
   useMediaQuery,
@@ -12,6 +11,8 @@ import { useDispatch } from 'react-redux';
 import axios from '../../../axiosInstance';
 // import * as Actions from '../../../store/actions/index';
 // import { RootState } from '../../../store/Store';
+import CircularLoading from '../../../components/CircularLoading/CircularLoading';
+
 import { Group } from '../../../store/reducers/group.reducer';
 // import { baseUrl } from '../../axiosInstance';
 const groupContainer = {
@@ -82,7 +83,7 @@ function GroupMain(): JSX.Element {
         Groups you might be interested in
       </Typography>
       <Stack direction='row' justifyContent='center'>
-        {loading && <CircularProgress sx={{ margin: '5rem 0' }} />}
+        {loading && <CircularLoading />}
       </Stack>
       <Box sx={groupContainer}>
         {!loading &&

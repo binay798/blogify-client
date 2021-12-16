@@ -13,5 +13,5 @@ export const img = {
   width: '100%',
   borderRadius: '4px',
   height: '100%',
-  objectfit: 'cover',
+  objectFit: 'contain' as 'contain',
 };

@@ -33,8 +33,8 @@ const img = {
 function Login() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('sham@gmail.com');
+  const [password, setPassword] = useState('123456');
   const [loading, setLoading] = useState(false);
   const smScreen = useMediaQuery('(max-width: 600px)');
 

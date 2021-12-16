@@ -11,7 +11,6 @@ import {
   ListItemText,
   Avatar,
   Pagination,
-  CircularProgress,
   List,
   ListSubheader,
   ListItemButton,
@@ -23,6 +22,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import axios from '../../axiosInstance';
 import { User } from '../../store/reducers/auth.reducer';
 import { Link } from 'react-router-dom';
+import CircularLoading from '../../components/CircularLoading/CircularLoading';
 
 const leftSideStyle = {
   background: 'var(--appbar)',
@@ -211,18 +211,9 @@ function RightContainer(): JSX.Element {
 
       {/* USERS CONTAINER */}
       {!users && (
-        <Stack
-          direction='row'
-          justifyContent='center'
-          alignItems='center'
-          spacing={1}
-          sx={{ paddingBottom: '2rem' }}
-        >
-          <CircularProgress />
-          <Typography variant='body2' color='secondary'>
-            Loading...
-          </Typography>
-        </Stack>
+        <Box sx={{ paddingBottom: '2rem' }}>
+          <CircularLoading />
+        </Box>
       )}
       <Grid
         container

@@ -7,7 +7,6 @@ import {
   ListItemIcon,
   Button,
   Box,
-  CircularProgress,
 } from '@mui/material';
 
 import AddPost from '../../../components/AddPost/AddPost';
@@ -27,6 +26,7 @@ import { RootState } from '../../../store/Store';
 import { Post as SinglePost } from '../../../store/reducers/post.reducer';
 import { User } from '../../../store/reducers/auth.reducer';
 import axiosMain from 'axios';
+import CircularLoading from '../../../components/CircularLoading/CircularLoading';
 
 function Posts(): JSX.Element {
   const state = useSelector((state: RootState) => state.auth);
@@ -71,19 +71,7 @@ function Posts(): JSX.Element {
 
         {/* ALL POSTS */}
         <Stack direction='column' sx={{ margin: '2rem auto' }} spacing={4}>
-          {!posts && (
-            <Stack
-              direction='row'
-              alignItems='center'
-              justifyContent='center'
-              spacing={1}
-            >
-              <CircularProgress />
-              <Typography variant='body2' color='secondary'>
-                Loading...
-              </Typography>
-            </Stack>
-          )}
+          {!posts && <CircularLoading />}
           {posts &&
             posts.map((el) => {
               return <Post data={el} key={el._id} />;

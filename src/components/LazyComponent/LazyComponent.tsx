@@ -1,6 +1,7 @@
-import { CircularProgress, Box, Stack, Typography } from '@mui/material';
+import { Box } from '@mui/material';
 import { Suspense } from 'react';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import CircularLoading from '../CircularLoading/CircularLoading';
 
 const theme = createTheme({
   palette: {
@@ -34,12 +35,7 @@ export function FallbackComponent(): JSX.Element {
           background: 'var(--body)',
         }}
       >
-        <Stack direction='row' spacing={2} alignItems='center'>
-          <CircularProgress color='secondary' />
-          <Typography variant='body2' color='secondary.light'>
-            Loading...
-          </Typography>
-        </Stack>
+        <CircularLoading />
       </Box>
     </ThemeProvider>
   );

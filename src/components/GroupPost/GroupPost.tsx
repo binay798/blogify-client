@@ -12,7 +12,6 @@ import {
   Stack,
   Typography,
   TextField,
-  CircularProgress,
 } from '@mui/material';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { red, blue } from '@mui/material/colors';
@@ -27,6 +26,7 @@ import { User } from '../../store/reducers/auth.reducer';
 import moment from 'moment';
 import { Post as SinglePost } from '../../store/reducers/post.reducer';
 import axiosMain from 'axios';
+import CircularLoading from '../CircularLoading/CircularLoading';
 
 interface PostProps {
   data: SinglePost;
@@ -224,14 +224,9 @@ function CommentBox(props: CommentProps): JSX.Element {
       </form>
       {/* LOADING */}
       {loading && (
-        <Stack
-          direction='row'
-          alignItems='center'
-          justifyContent='center'
-          sx={{ paddingTop: '3rem' }}
-        >
-          <CircularProgress />
-        </Stack>
+        <Box sx={{ paddingTop: '2rem' }}>
+          <CircularLoading />
+        </Box>
       )}
 
       {/* NO COMMENTS */}

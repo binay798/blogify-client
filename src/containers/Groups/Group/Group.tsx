@@ -17,8 +17,8 @@ import {
   TextField,
   Divider,
   Modal,
-  CircularProgress,
 } from '@mui/material';
+import CircularLoading from '../../../components/CircularLoading/CircularLoading';
 import { person } from '../../../utils/images';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import PublicIcon from '@mui/icons-material/Public';
@@ -75,22 +75,17 @@ function Group() {
     };
   }, [params.id, dispatch]);
   if (!state.selectedGroup) {
-    return <div>Loading...</div>;
+    return (
+      <Box sx={{ paddingTop: '5rem' }}>
+        <CircularLoading />
+      </Box>
+    );
   }
   if (loading) {
     return (
-      <Stack
-        direction='row'
-        justifyContent='center'
-        alignItems='center'
-        spacing={2}
-        sx={{ paddingTop: '5rem' }}
-      >
-        <CircularProgress />
-        <Typography variant='body2' color='secondary'>
-          Loading...
-        </Typography>
-      </Stack>
+      <Box sx={{ paddingTop: '5rem' }}>
+        <CircularLoading />
+      </Box>
     );
   }
   return (
@@ -186,19 +181,7 @@ function GroupContainer(props: GroupContainerProps): JSX.Element {
         <Box>
           <CreateNewGroupPost />
           <Stack direction='column' sx={{ marginTop: '3rem' }} spacing={3}>
-            {loading && (
-              <Stack
-                direction='row'
-                alignItems='center'
-                justifyContent='center'
-                spacing={1}
-              >
-                <CircularProgress />
-                <Typography variant='body2' color='secondary'>
-                  Loading...
-                </Typography>
-              </Stack>
-            )}
+            {loading && <CircularLoading />}
             {posts &&
               posts.map((el: SinglePost) => {
                 return <GroupPost key={el._id} data={el} />;

@@ -57,6 +57,15 @@ function Posts(): JSX.Element {
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const addPost = (post: SinglePost) => {
+    // setLoading(true);
+    setPosts((prev) => {
+      if (!prev) return null;
+      return [post, ...prev];
+    });
+    // setLoading(false);
+  };
   return (
     <Grid container spacing={2}>
       <Grid item xs={12} sm={5}>
@@ -67,7 +76,7 @@ function Posts(): JSX.Element {
         </Stack>
       </Grid>
       <Grid item xs={12} sm={7}>
-        <AddPost />
+        <AddPost addPost={addPost} />
 
         {/* ALL POSTS */}
         <Stack direction='column' sx={{ margin: '2rem auto' }} spacing={4}>

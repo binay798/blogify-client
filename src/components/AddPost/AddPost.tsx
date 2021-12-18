@@ -21,8 +21,9 @@ import AddAPhotoIcon from '@mui/icons-material/AddAPhoto';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/Store';
 import { User } from '../../store/reducers/auth.reducer';
-import { useDispatch } from 'react-redux';
-import * as actionCreators from './../../store/actionCreators/index';
+import { Post } from '../../store/reducers/post.reducer';
+import axios from '../../axiosInstance';
+import initializeState from '../../utils/initializeState';
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -36,7 +37,11 @@ const style = {
   p: 2,
 };
 
-function AddPost(): JSX.Element {
+interface AddPostProps {
+  addPost(post: Post): void;
+}
+
+function AddPost(props: AddPostProps): JSX.Element {
   const state = useSelector((state: RootState) => state.auth);
   const [open, setOpen] = useState(false);
   const smScreen = useMediaQuery('(max-width: 600px)');
@@ -63,6 +68,7 @@ function AddPost(): JSX.Element {
         handleOpen={handleOpen}
         handleClose={handleClose}
         user={state.user}
+        addPost={props.addPost}
       />
     </Paper>
   );
@@ -73,11 +79,11 @@ interface CreatePostModalProps {
   handleOpen(): void;
   handleClose(): void;
   user: User | null;
+  addPost(post: Post): void;
 }
 
 function CreatePostModal(props: CreatePostModalProps): JSX.Element {
-  const dispatch = useDispatch();
-  const [file, setFile] = useState<File>();
+  const [file, setFile] = useState<File | string>('');
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [imgSrc, setImgSrc] = useState<string>();
@@ -85,7 +91,6 @@ function CreatePostModal(props: CreatePostModalProps): JSX.Element {
 
   const fileChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
-    console.log('file add post.tsx');
     const reader = new FileReader();
     if (!files) return;
     setFile(files[0]);
@@ -98,12 +103,23 @@ function CreatePostModal(props: CreatePostModalProps): JSX.Element {
     }
   };
 
-  const submitHandler = (e: React.SyntheticEvent) => {
+  const submitHandler = async (e: React.SyntheticEvent) => {
     e.preventDefault();
-    if (title === '' || description === '' || file === undefined) return;
-    dispatch(
-      actionCreators.createPost({ title, description, photo: file }, setLoading)
-    );
+    if (title === '' || description === '' || file === '') return;
+    setLoading(true);
+    try {
+      const fd = new FormData();
+      fd.append('title', title);
+      fd.append('description', description);
+      fd.append('image', file);
+
+      let res = await axios.post<{ post: Post }>('/api/v1/posts', fd);
+      props.addPost(res.data.post);
+      initializeState([setTitle, setFile, setDescription, setImgSrc]);
+    } catch (err) {
+      console.log(err);
+    }
+    setLoading(false);
   };
   return (
     <Modal

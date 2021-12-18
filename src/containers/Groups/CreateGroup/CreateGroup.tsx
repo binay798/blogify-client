@@ -23,6 +23,7 @@ import AddIcon from '@mui/icons-material/Add';
 import * as actionCreators from '../../../store/actionCreators/index';
 import { useDispatch } from 'react-redux';
 import PhotoCamera from '@mui/icons-material/PhotoCamera';
+import initializeState from '../../../utils/initializeState';
 
 const paper = {
   padding: '2rem',
@@ -44,6 +45,7 @@ const img = {
   width: '25rem',
   objectFit: 'contain' as 'contain',
   display: 'block',
+  marginBottom: '2rem',
 };
 function CreateGroup(): JSX.Element {
   const dispatch = useDispatch();
@@ -88,6 +90,7 @@ function CreateGroup(): JSX.Element {
         )
       );
     }
+    initializeState([setName, setDescription, setLocation]);
   };
   return (
     <Box
@@ -197,6 +200,7 @@ function CreateGroup(): JSX.Element {
             startIcon={<AddIcon />}
             variant='contained'
             type='submit'
+            sx={{ marginTop: '2rem' }}
           >
             Create Group
           </Button>

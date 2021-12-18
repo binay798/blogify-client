@@ -27,6 +27,7 @@ import { RootState } from '../../store/Store';
 import { User } from '../../store/reducers/auth.reducer';
 import axios from '../../axiosInstance';
 import axiosMain from 'axios';
+import CircularLoading from '../CircularLoading/CircularLoading';
 
 interface PostProps {
   data: SinglePost;
@@ -232,14 +233,9 @@ function CommentBox(props: CommentProps): JSX.Element {
       </form>
       {/* LOADING */}
       {loading && (
-        <Stack
-          direction='row'
-          alignItems='center'
-          justifyContent='center'
-          sx={{ paddingTop: '3rem' }}
-        >
-          <CircularProgress />
-        </Stack>
+        <Box sx={{ paddingTop: '2rem' }}>
+          <CircularLoading />
+        </Box>
       )}
 
       {/* NO COMMENTS */}

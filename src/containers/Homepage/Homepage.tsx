@@ -55,6 +55,15 @@ function Homepage(): JSX.Element {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page]);
 
+  const addPost = (post: SinglePost) => {
+    setLoading(true);
+    setPosts((prev) => {
+      if (!prev) return null;
+      return [post, ...prev];
+    });
+    setLoading(false);
+  };
+
   return (
     <Grid
       container
@@ -101,7 +110,7 @@ function Homepage(): JSX.Element {
                 },
               }}
             >
-              <AddPost />
+              <AddPost addPost={addPost} />
 
               {/* POSTS */}
 

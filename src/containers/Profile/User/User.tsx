@@ -8,7 +8,6 @@ import {
   Stack,
   Typography,
   Grid,
-  CircularProgress,
   Paper,
   List,
   ListItem,
@@ -264,17 +263,9 @@ function Posts(props: PostsProps): JSX.Element {
         {/* ALL POSTS */}
         <Stack direction='column' sx={{ margin: '0rem auto' }} spacing={4}>
           {!posts && (
-            <Stack
-              direction='row'
-              alignItems='center'
-              justifyContent='center'
-              spacing={1}
-            >
-              <CircularProgress />
-              <Typography variant='body2' color='secondary'>
-                Loading...
-              </Typography>
-            </Stack>
+            <Box sx={{ marginTop: '3rem' }}>
+              <CircularLoading />
+            </Box>
           )}
           {posts &&
             posts.map((el) => {
@@ -328,17 +319,20 @@ function Photos(props: PhotosProps): JSX.Element {
         Photos
       </Typography>
       {!posts && (
-        <Stack
-          direction='row'
-          alignItems='center'
-          justifyContent='center'
-          spacing={1}
+        <Box sx={{ marginBottom: '3rem' }}>
+          <CircularLoading />
+        </Box>
+      )}
+
+      {posts && posts.length === 0 && (
+        <Typography
+          color='secondary'
+          variant='body1'
+          sx={{ textAlign: 'center' }}
+          display='block'
         >
-          <CircularProgress />
-          <Typography variant='body2' color='secondary'>
-            Loading...
-          </Typography>
-        </Stack>
+          No photos
+        </Typography>
       )}
 
       <Box

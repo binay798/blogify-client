@@ -162,7 +162,10 @@ function Layout(): JSX.Element {
                   open={openDrawer}
                   onClose={() => setOpenDrawer((prev) => !prev)}
                 >
-                  <DrawerContent user={state.user} />
+                  <DrawerContent
+                    close={() => setOpenDrawer((prev) => !prev)}
+                    user={state.user}
+                  />
                 </Drawer>
               </>
             )}
@@ -177,12 +180,17 @@ function Layout(): JSX.Element {
 
 interface DrawerContentProps {
   user: User | null;
+  close(): void;
 }
 
 function DrawerContent(props: DrawerContentProps): JSX.Element {
   return (
     <List>
-      <Link to='profile' style={{ color: 'inherit', textDecoration: 'none' }}>
+      <Link
+        to='profile'
+        onClick={props.close}
+        style={{ color: 'inherit', textDecoration: 'none' }}
+      >
         <ListItemButton>
           <ListItemIcon>
             <Avatar src={`${props.user?.photo}`} alt='B' />
@@ -198,7 +206,11 @@ function DrawerContent(props: DrawerContentProps): JSX.Element {
       </Link>
 
       <Divider sx={{ borderColor: 'var(--divider)' }} />
-      <Link style={{ color: 'inherit', textDecoration: 'none' }} to='/groups'>
+      <Link
+        onClick={props.close}
+        style={{ color: 'inherit', textDecoration: 'none' }}
+        to='/groups'
+      >
         <ListItemButton>
           <ListItemIcon>
             <GroupsIcon sx={{ color: 'var(--light)', fontSize: '3rem' }} />
@@ -209,6 +221,7 @@ function DrawerContent(props: DrawerContentProps): JSX.Element {
       <Link
         style={{ color: 'inherit', textDecoration: 'none' }}
         to='/groups/create'
+        onClick={props.close}
       >
         <ListItemButton>
           <ListItemIcon>
@@ -217,7 +230,11 @@ function DrawerContent(props: DrawerContentProps): JSX.Element {
           <ListItemText primary='Create Group' />
         </ListItemButton>
       </Link>
-      <Link style={{ color: 'inherit', textDecoration: 'none' }} to='/users'>
+      <Link
+        onClick={props.close}
+        style={{ color: 'inherit', textDecoration: 'none' }}
+        to='/users'
+      >
         <ListItemButton>
           <ListItemIcon>
             <PeopleAltIcon sx={{ color: 'var(--light)', fontSize: '3rem' }} />

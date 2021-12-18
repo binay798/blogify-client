@@ -123,7 +123,7 @@ function Group() {
       {/* GROUP BASIC DETAIL */}
       <Box
         sx={{
-          padding: smScreen ? '8rem 1.5rem 4rem 1.5rem' : '8rem 4rem 4rem 4rem',
+          padding: smScreen ? '5rem 1.5rem 1rem 1.5rem' : '8rem 4rem 4rem 4rem',
           background: 'var(--appbar)',
           marginTop: '-4rem',
         }}
@@ -133,12 +133,21 @@ function Group() {
           alignItems='center'
           spacing={1}
           justifyContent='space-between'
+          sx={{ flexWrap: 'wrap' }}
         >
           <Box>
-            <Typography variant='h4' color='secondary.light' gutterBottom>
+            <Typography
+              variant={smScreen ? 'h6' : 'h4'}
+              color='secondary.light'
+              gutterBottom
+            >
               {state.selectedGroup.name}
             </Typography>
-            <Typography color='secondary' component='div'>
+            <Typography
+              color='secondary'
+              sx={{ marginBottom: smScreen ? '1rem' : 0 }}
+              component='div'
+            >
               <Stack direction='row' spacing={1}>
                 <PublicIcon />
 

@@ -254,10 +254,11 @@ const style = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 450,
+  maxWidth: 450,
   bgcolor: 'var(--appbar)',
   boxShadow: 24,
   p: 2,
+  width: '100%',
 };
 
 function CreateNewGroupPost(): JSX.Element {
@@ -296,7 +297,7 @@ function CreateNewGroupPost(): JSX.Element {
     );
   };
   return (
-    <Paper sx={{ padding: '2rem' }}>
+    <Paper sx={{ padding: '2rem', width: '100%' }}>
       <Stack direction='row' spacing={2} alignItems='center'>
         <Avatar src={person[3]} alt='person' />
         <Button

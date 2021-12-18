@@ -33,7 +33,7 @@ const img = {
 function Login() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [email, setEmail] = useState('sham@gmail.com');
+  const [email, setEmail] = useState('binay@gmail.com');
   const [password, setPassword] = useState('123456');
   const [loading, setLoading] = useState(false);
   const smScreen = useMediaQuery('(max-width: 600px)');
@@ -66,6 +66,7 @@ function Login() {
                 type='email'
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                required={true}
               />
               <TextField
                 sx={{ width: '100%' }}
@@ -74,6 +75,7 @@ function Login() {
                 type='password'
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                required={true}
               />
               <Stack direction='row' spacing={1} justifyContent='space-between'>
                 <FormControlLabel

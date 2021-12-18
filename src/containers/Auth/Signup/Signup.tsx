@@ -83,6 +83,7 @@ function Signup() {
                   type='text'
                   value={firstname}
                   onChange={(e) => setFirstname(e.target.value)}
+                  required={true}
                 />
                 <TextField
                   sx={{ width: '100%' }}
@@ -91,6 +92,7 @@ function Signup() {
                   type='text'
                   value={lastname}
                   onChange={(e) => setlastname(e.target.value)}
+                  required={true}
                 />
               </Stack>
               <TextField
@@ -100,6 +102,7 @@ function Signup() {
                 type='text'
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
+                required={true}
               />
               <TextField
                 sx={{ width: '100%' }}
@@ -108,6 +111,7 @@ function Signup() {
                 type='email'
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                required={true}
               />
               <TextField
                 sx={{ width: '100%' }}
@@ -116,6 +120,7 @@ function Signup() {
                 type='password'
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                required={true}
               />
               <TextField
                 sx={{ width: '100%' }}
@@ -124,6 +129,7 @@ function Signup() {
                 type='password'
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
+                required={true}
               />
 
               <Button

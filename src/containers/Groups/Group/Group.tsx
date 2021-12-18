@@ -17,6 +17,7 @@ import {
   TextField,
   Divider,
   Modal,
+  useMediaQuery,
 } from '@mui/material';
 import CircularLoading from '../../../components/CircularLoading/CircularLoading';
 import { person } from '../../../utils/images';
@@ -40,17 +41,15 @@ export const groupPhotoContainer = {
   height: '35rem',
   borderRadius: '0 0 1rem 1rem',
   overflow: 'hidden',
-  margin: '0 4rem',
+  // margin: '0 4rem',
 };
 
-export const groupMainContainer = {
-  padding: '4rem',
-};
 function Group() {
   const state = useSelector((state: RootState) => state.group);
   const dispatch = useDispatch();
   const params = useParams();
   const [loading, setLoading] = useState(false);
+  const smScreen = useMediaQuery('(max-width: 600px)');
 
   useEffect(() => {
     const cancelReq = axiosMain.CancelToken.source();
@@ -89,9 +88,18 @@ function Group() {
     );
   }
   return (
-    <Box sx={{ overflowY: 'scroll', height: '100%' }}>
+    <Box
+      sx={{
+        overflowY: 'scroll',
+        height: '100%',
+        '&::-webkit-scrollbar': { width: '0rem' },
+      }}
+    >
       {/* GROUP PHOTO */}
-      <Box position='relative' sx={groupPhotoContainer}>
+      <Box
+        position='relative'
+        sx={{ ...groupPhotoContainer, margin: smScreen ? '0rem' : '0 4rem' }}
+      >
         <img
           style={{ width: '100%', height: '100%', objectFit: 'cover' }}
           src={`${state.selectedGroup.photo}`}
@@ -115,7 +123,7 @@ function Group() {
       {/* GROUP BASIC DETAIL */}
       <Box
         sx={{
-          padding: '8rem 4rem 4rem 4rem',
+          padding: smScreen ? '8rem 1.5rem 4rem 1.5rem' : '8rem 4rem 4rem 4rem',
           background: 'var(--appbar)',
           marginTop: '-4rem',
         }}
@@ -154,6 +162,7 @@ interface GroupContainerProps {
 function GroupContainer(props: GroupContainerProps): JSX.Element {
   const [posts, setPosts] = useState<SinglePost[] | null>(null);
   const [loading, setLoading] = useState(false);
+  const smScreen = useMediaQuery('(max-width: 600px)');
   useEffect(() => {
     const cancelReq = axiosMain.CancelToken.source();
     (async () => {
@@ -176,56 +185,58 @@ function GroupContainer(props: GroupContainerProps): JSX.Element {
   }, [props.group._id]);
 
   return (
-    <Grid container sx={groupMainContainer} spacing={3}>
-      <Grid item xs={12} sm={7}>
-        <Box>
-          <CreateNewGroupPost />
-          <Stack direction='column' sx={{ marginTop: '3rem' }} spacing={3}>
-            {loading && <CircularLoading />}
-            {posts &&
-              posts.map((el: SinglePost) => {
-                return <GroupPost key={el._id} data={el} />;
-              })}
-          </Stack>
-        </Box>
+    <Box sx={{ margin: smScreen ? '1rem 0.5rem' : '4rem' }}>
+      <Grid container spacing={3}>
+        <Grid item xs={12} sm={7} order={smScreen ? 1 : 0}>
+          <Box>
+            <CreateNewGroupPost />
+            <Stack direction='column' sx={{ marginTop: '3rem' }} spacing={3}>
+              {loading && <CircularLoading />}
+              {posts &&
+                posts.map((el: SinglePost) => {
+                  return <GroupPost key={el._id} data={el} />;
+                })}
+            </Stack>
+          </Box>
+        </Grid>
+        <Grid item xs={12} sm={5} order={smScreen ? 0 : 1}>
+          <Box position='sticky' top={20}>
+            <Paper sx={{ padding: '2rem' }}>
+              <Typography gutterBottom variant='h6'>
+                About
+              </Typography>
+              <Typography variant='body2' color='secondary'>
+                {props.group.description}
+              </Typography>
+              {/* LIST */}
+              <List>
+                <ListItem>
+                  <ListItemIcon>
+                    <PublicIcon />
+                  </ListItemIcon>
+                  <ListItemText
+                    primary='Public'
+                    secondary='Anyone can see who is in the group and what they post.'
+                  />
+                </ListItem>
+                <ListItem>
+                  <ListItemIcon>
+                    <LocationOnIcon />
+                  </ListItemIcon>
+                  <ListItemText
+                    primary={
+                      <Typography variant='body2' sx={{ fontWeight: 600 }}>
+                        {props.group.location}
+                      </Typography>
+                    }
+                  />
+                </ListItem>
+              </List>
+            </Paper>
+          </Box>
+        </Grid>
       </Grid>
-      <Grid item xs={12} sm={5}>
-        <Box position='sticky' top={20}>
-          <Paper sx={{ padding: '2rem' }}>
-            <Typography gutterBottom variant='h6'>
-              About
-            </Typography>
-            <Typography variant='body2' color='secondary'>
-              {props.group.description}
-            </Typography>
-            {/* LIST */}
-            <List>
-              <ListItem>
-                <ListItemIcon>
-                  <PublicIcon />
-                </ListItemIcon>
-                <ListItemText
-                  primary='Public'
-                  secondary='Anyone can see who is in the group and what they post.'
-                />
-              </ListItem>
-              <ListItem>
-                <ListItemIcon>
-                  <LocationOnIcon />
-                </ListItemIcon>
-                <ListItemText
-                  primary={
-                    <Typography variant='body2' sx={{ fontWeight: 600 }}>
-                      {props.group.location}
-                    </Typography>
-                  }
-                />
-              </ListItem>
-            </List>
-          </Paper>
-        </Box>
-      </Grid>
-    </Grid>
+    </Box>
   );
 }
 
